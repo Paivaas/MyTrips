@@ -1,11 +1,14 @@
 package br.senai.sp.jandira.mytrips
 
 import android.os.Bundle
+import android.renderscript.ScriptGroup.Input
 import androidx.activity.ComponentActivity
+import androidx.activity.R
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -14,8 +17,11 @@ import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowForward
@@ -56,7 +62,10 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    Login()
+                    Column {
+                        Login()
+                        SingUp()
+                    }
                 }
             }
         }
@@ -67,12 +76,13 @@ class MainActivity : ComponentActivity() {
 fun Login() {
     Column (
         modifier = Modifier
-            .fillMaxSize(),
+            .fillMaxSize()
     ){
 
         Row (
             modifier = Modifier
-                .fillMaxWidth(),
+                .fillMaxWidth()
+                .height(200.dp),
             horizontalArrangement = Arrangement.End
         ){
             Box(modifier = Modifier
@@ -86,25 +96,7 @@ fun Login() {
                 )
             ){}
         }
-        Row (
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(160.dp),
-            horizontalArrangement = Arrangement.Center,
-            verticalAlignment = Alignment.CenterVertically
-        ){
-            Box(modifier = Modifier
-                .width(99.dp)
-                .height(99.dp)
-                .background(
-                    color = Color(0xFFCF06F0),
-                    shape = RoundedCornerShape(
-                        50.dp
-                    )
-                )
-            ){}
 
-        }
 
         Column (modifier = Modifier
             .padding(22.dp)
@@ -147,7 +139,9 @@ fun Login() {
                         focusedBorderColor = Color(0xffCF06F0),
                         unfocusedBorderColor = Color(0xffCF06F0),
                         ),
-                shape = RoundedCornerShape(16.dp)
+                shape = RoundedCornerShape(16.dp),
+                modifier = Modifier
+                    .width(327.dp)
             )
 
             OutlinedTextField(
@@ -166,7 +160,9 @@ fun Login() {
                         focusedBorderColor = Color(0xffCF06F0),
                         unfocusedBorderColor = Color(0xffCF06F0)
                     ),
-                shape = RoundedCornerShape(16.dp)
+                shape = RoundedCornerShape(16.dp),
+                modifier = Modifier
+                    .width(327.dp)
             )
 
 
@@ -206,6 +202,8 @@ fun Login() {
                 Text(text = "Sign in",
                     color = Color(0xFFCF06F0),
                     fontWeight = FontWeight.Bold,
+                    modifier = Modifier
+                        .padding(start = 6.dp)
                     )
             }
         }
@@ -233,6 +231,260 @@ fun Login() {
 @Composable
 fun SingUp() {
 
+    Column(
+        modifier = Modifier.fillMaxSize()
+    ) {
+
+        Row (
+            modifier = Modifier
+                .fillMaxWidth(),
+            horizontalArrangement = Arrangement.End
+        ){
+            Box(modifier = Modifier
+                .width(120.dp)
+                .height(40.dp)
+                .background(
+                    color = Color(0xFFCF06F0),
+                    shape = RoundedCornerShape(
+                        bottomStart = 16.dp
+                    )
+                )
+            ){}
+        }
+
+        Column (modifier = Modifier
+            .fillMaxWidth()
+            .padding(22.dp),
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Center
+        ){
+            Text(text = "Sing Up",
+                color = Color(0xffCF06F0),
+                fontSize = 48.sp,
+                fontWeight = FontWeight.Bold,
+            )
+            Text(text = "Create a new account",
+                color = Color(0xFFA09C9C)
+            )
+        }
+
+        Column (
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(160.dp),
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Center
+
+        ) {
+
+            Box(modifier = Modifier
+                .width(100.dp)
+                .height(100.dp),
+            ){
+                Card(
+
+                ) {
+                    Image(
+                        painter = painterResource(id = br.senai.sp.jandira.mytrips.R.drawable.eclipse),
+                        contentDescription = "",
+                        modifier = Modifier.size(100.dp),
+
+                    )
+
+                }
+
+                Image(
+                    painter = painterResource(id = br.senai.sp.jandira.mytrips.R.drawable.vectorcam),
+                    contentDescription = "Mudar foto de perfil",
+                    modifier = Modifier
+                        .size(28.dp)
+                        .offset(y = 80.dp, x = 80.dp)
+                )
+
+            }
+        }
+
+        Column (
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.SpaceAround,
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(300.dp)
+        ){
+
+            OutlinedTextField(
+                value = "",
+                onValueChange = {},
+                label = {
+                    Text(text = "Username")
+                },
+                leadingIcon = {
+                    Icon(imageVector = Icons.Default.Lock,
+                        contentDescription = "oi",
+                        tint = Color(0xffCF06F0),
+                    )
+                },
+                colors = OutlinedTextFieldDefaults
+                    .colors(
+                        focusedBorderColor = Color(0xffCF06F0),
+                        unfocusedBorderColor = Color(0xffCF06F0),
+                    ),
+                shape = RoundedCornerShape(16.dp),
+                modifier = Modifier
+                    .width(327.dp)
+            )
+
+            OutlinedTextField(
+                value = "",
+                onValueChange = {},
+                label = {
+                    Text(text = "Phone")
+                },
+                leadingIcon = {
+                    Icon(imageVector = Icons.Default.Email,
+                        contentDescription = "oi",
+                        tint = Color(0xffCF06F0),)
+                },
+                colors = OutlinedTextFieldDefaults
+                    .colors(
+                        focusedBorderColor = Color(0xffCF06F0),
+                        unfocusedBorderColor = Color(0xffCF06F0)
+                    ),
+                shape = RoundedCornerShape(16.dp),
+                modifier = Modifier
+                    .width(327.dp)
+            )
+
+            OutlinedTextField(
+                value = "",
+                onValueChange = {},
+                label = {
+                    Text(text = "E-mail")
+                },
+                leadingIcon = {
+                    Icon(imageVector = Icons.Default.Email,
+                        contentDescription = "oi",
+                        tint = Color(0xffCF06F0),)
+                },
+                colors = OutlinedTextFieldDefaults
+                    .colors(
+                        focusedBorderColor = Color(0xffCF06F0),
+                        unfocusedBorderColor = Color(0xffCF06F0)
+                    ),
+                shape = RoundedCornerShape(16.dp),
+                modifier = Modifier
+                    .width(327.dp)
+            )
+
+            OutlinedTextField(
+                value = "",
+                onValueChange = {},
+                label = {
+                    Text(text = "Password")
+                },
+                leadingIcon = {
+                    Icon(imageVector = Icons.Default.Email,
+                        contentDescription = "oi",
+                        tint = Color(0xffCF06F0),)
+                },
+                colors = OutlinedTextFieldDefaults
+                    .colors(
+                        focusedBorderColor = Color(0xffCF06F0),
+                        unfocusedBorderColor = Color(0xffCF06F0)
+                    ),
+                shape = RoundedCornerShape(16.dp),
+                modifier = Modifier
+                    .width(327.dp)
+            )
+
+        }
+        Row (
+            modifier = Modifier
+                .width(200.dp)
+                .height(50.dp)
+                .padding(start = 37.dp),
+            verticalAlignment = Alignment.CenterVertically,
+
+        ){
+            OutlinedTextField(value = "",
+                onValueChange = {},
+                modifier = Modifier
+                    .width(30.dp)
+                    .height(27.dp)
+            )
+
+
+
+
+            Text(text = "Over 18?",
+                modifier = Modifier
+                    .padding(start = 8.dp))
+        }
+
+        Column (
+
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(80.dp),
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally
+        ){
+            Button(onClick = { /*TODO*/ },
+                shape = RoundedCornerShape(16.dp),
+                colors = ButtonDefaults.buttonColors(containerColor = Color((0xffCF06F0)))
+            ) {
+                Row(
+                    modifier = Modifier
+                        .width(295.dp)
+                        .height(48.dp),
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.SpaceAround
+                ) {
+                    Text(
+                        text = "Create Account",
+                        fontSize = 26.sp
+                    )
+                }
+            }
+        }
+
+        Row (modifier = Modifier
+            .fillMaxWidth()
+            .height(100.dp)
+            .padding(end = 32.dp),
+            horizontalArrangement = Arrangement.End
+
+        ){
+            Text(text = "Already have an account?",
+                color = Color(0xFFFA09C9C))
+            Text(text = "Login",
+                color = Color(0xFFCF06F0),
+                fontWeight = FontWeight.Bold,
+                modifier = Modifier
+                    .padding(start = 6.dp)
+            )
+        }
+    }
+
+    Row (
+        modifier = Modifier
+            .fillMaxWidth()
+            .fillMaxHeight(),
+        horizontalArrangement = Arrangement.Start,
+        verticalAlignment = Alignment.Bottom
+    ){
+        Box(modifier = Modifier
+            .width(120.dp)
+            .height(40.dp)
+            .background(
+                color = Color(0xFFCF06F0),
+                shape = RoundedCornerShape(
+                    topEnd = 16.dp
+                )
+            )
+        ){}
+    }
+
 
 }
 
@@ -243,4 +495,12 @@ fun GreetingPreview() {
            Login()
     }
 }
+@Preview(showBackground = true)
+@Composable
+fun SingUPpreview() {
+    MyTripsTheme {
+        SingUp()
+    }
+}
+
 
