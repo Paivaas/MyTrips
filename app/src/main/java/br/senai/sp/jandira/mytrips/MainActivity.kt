@@ -27,11 +27,14 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowForward
 import androidx.compose.material.icons.filled.Email
 import androidx.compose.material.icons.filled.Lock
+import androidx.compose.material.icons.filled.Person
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardColors
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.Checkbox
+import androidx.compose.material3.CheckboxDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
@@ -290,6 +293,14 @@ fun SingUp() {
                         )
                 }
 
+                Icon(imageVector = Icons.Default.Person,
+                    contentDescription = "oi",
+                    tint = Color(0xffCF06F0),
+                    modifier = Modifier
+                        .size(90.dp)
+                        .offset(y = 0.dp, x = 5.dp)
+                )
+
                 Image(
                     painter = painterResource(id = br.senai.sp.jandira.mytrips.R.drawable.vectorcam),
                     contentDescription = "Mudar foto de perfil",
@@ -403,19 +414,18 @@ fun SingUp() {
             verticalAlignment = Alignment.CenterVertically,
 
         ){
-            OutlinedTextField(value = "",
-                onValueChange = {},
-                modifier = Modifier
-                    .width(30.dp)
-                    .height(27.dp)
-            )
 
 
-
-
-            Text(text = "Over 18?",
-                modifier = Modifier
-                    .padding(start = 8.dp))
+            Checkbox(
+                checked = false,
+                onCheckedChange  = {},
+                colors = CheckboxDefaults
+                    .colors(
+                        checkedColor = Color(0xffCF06F0),
+                        uncheckedColor = Color(0xffCF06F0)
+                    )
+                )
+            Text(text = "Over 18?")
         }
 
         Column (
@@ -485,7 +495,7 @@ fun SingUp() {
 
 }
 
-@Preview(showBackground = true)
+@Preview(showBackground = true, showSystemUi = true)
 @Composable
 fun GreetingPreview() {
     MyTripsTheme {
