@@ -281,16 +281,13 @@ fun SingUp() {
                 .width(100.dp)
                 .height(100.dp),
             ){
-                Card(
-
-                ) {
+                Box(modifier = Modifier){
                     Image(
                         painter = painterResource(id = br.senai.sp.jandira.mytrips.R.drawable.eclipse),
                         contentDescription = "",
                         modifier = Modifier.size(100.dp),
 
-                    )
-
+                        )
                 }
 
                 Image(
