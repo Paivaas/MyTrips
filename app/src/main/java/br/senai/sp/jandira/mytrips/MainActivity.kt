@@ -27,6 +27,7 @@ import androidx.compose.material.icons.filled.ArrowForward
 import androidx.compose.material.icons.filled.Email
 import androidx.compose.material.icons.filled.Lock
 import androidx.compose.material.icons.filled.Person
+import androidx.compose.material.icons.filled.Phone
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
@@ -326,7 +327,7 @@ fun SignUp() {
                     Text(text = "Username")
                 },
                 leadingIcon = {
-                    Icon(imageVector = Icons.Default.Lock,
+                    Icon(imageVector = Icons.Default.Person,
                         contentDescription = "Cadeado",
                         tint = Color(0xffCF06F0),
                     )
@@ -348,7 +349,7 @@ fun SignUp() {
                     Text(text = "Phone")
                 },
                 leadingIcon = {
-                    Icon(imageVector = Icons.Default.Email,
+                    Icon(imageVector = Icons.Default.Phone,
                         contentDescription = "Email",
                         tint = Color(0xffCF06F0),)
                 },
@@ -390,7 +391,7 @@ fun SignUp() {
                     Text(text = "Password")
                 },
                 leadingIcon = {
-                    Icon(imageVector = Icons.Default.Email,
+                    Icon(imageVector = Icons.Default.Lock,
                         contentDescription = "Email",
                         tint = Color(0xffCF06F0),)
                 },
