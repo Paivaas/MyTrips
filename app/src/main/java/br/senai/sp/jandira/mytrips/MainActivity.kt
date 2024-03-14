@@ -3,7 +3,6 @@ package br.senai.sp.jandira.mytrips
 import android.os.Bundle
 import android.renderscript.ScriptGroup.Input
 import androidx.activity.ComponentActivity
-import androidx.activity.R
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -67,7 +66,7 @@ class MainActivity : ComponentActivity() {
                 ) {
                     Column {
                         Login()
-                        SingUp()
+                        SignUp()
                     }
                 }
             }
@@ -232,7 +231,7 @@ fun Login() {
     }
 }
 @Composable
-fun SingUp() {
+fun SignUp() {
 
     Column(
         modifier = Modifier.fillMaxSize()
@@ -261,7 +260,7 @@ fun SingUp() {
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
         ){
-            Text(text = "Sing Up",
+            Text(text = "Sign Up",
                 color = Color(0xffCF06F0),
                 fontSize = 48.sp,
                 fontWeight = FontWeight.Bold,
@@ -328,7 +327,7 @@ fun SingUp() {
                 },
                 leadingIcon = {
                     Icon(imageVector = Icons.Default.Lock,
-                        contentDescription = "oi",
+                        contentDescription = "Cadeado",
                         tint = Color(0xffCF06F0),
                     )
                 },
@@ -350,7 +349,7 @@ fun SingUp() {
                 },
                 leadingIcon = {
                     Icon(imageVector = Icons.Default.Email,
-                        contentDescription = "oi",
+                        contentDescription = "Email",
                         tint = Color(0xffCF06F0),)
                 },
                 colors = OutlinedTextFieldDefaults
@@ -371,7 +370,7 @@ fun SingUp() {
                 },
                 leadingIcon = {
                     Icon(imageVector = Icons.Default.Email,
-                        contentDescription = "oi",
+                        contentDescription = "Email",
                         tint = Color(0xffCF06F0),)
                 },
                 colors = OutlinedTextFieldDefaults
@@ -392,7 +391,7 @@ fun SingUp() {
                 },
                 leadingIcon = {
                     Icon(imageVector = Icons.Default.Email,
-                        contentDescription = "oi",
+                        contentDescription = "Email",
                         tint = Color(0xffCF06F0),)
                 },
                 colors = OutlinedTextFieldDefaults
@@ -506,7 +505,7 @@ fun GreetingPreview() {
 @Composable
 fun SingUPpreview() {
     MyTripsTheme {
-        SingUp()
+        SignUp()
     }
 }
 
