@@ -21,6 +21,7 @@ import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -49,6 +50,8 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -73,8 +76,6 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colorScheme.background
                 ) {
                     Column {
-                        Login()
-                        SignUp()
                         Home()
                     }
                 }
@@ -83,10 +84,16 @@ class MainActivity : ComponentActivity() {
     }
 }
 
-
-
 @Composable
 fun Login() {
+
+    var emailState = remember {
+        mutableStateOf("")
+    }
+    var passwordState = remember {
+        mutableStateOf("")
+    }
+
     Column (
         modifier = Modifier
             .fillMaxSize()
@@ -136,8 +143,10 @@ fun Login() {
         ){
 
             OutlinedTextField(
-                value = "",
-                onValueChange = {},
+                value = emailState.value,
+                onValueChange = {
+                                emailState.value = it
+                },
                 label = {
                     Text(text = "E-mail")
                 },
@@ -158,8 +167,10 @@ fun Login() {
             )
 
             OutlinedTextField(
-                value = "",
-                onValueChange = {},
+                value = passwordState.value,
+                onValueChange = {
+                                passwordState.value = it
+                },
                 label = {
                     Text(text = "Password")
                 },
@@ -243,6 +254,23 @@ fun Login() {
 }
 @Composable
 fun SignUp() {
+
+    var usernameState = remember {
+        mutableStateOf("")
+    }
+    var phoneState = remember {
+        mutableStateOf("")
+    }
+    var emailState = remember {
+        mutableStateOf("")
+    }
+    var passwordState = remember {
+        mutableStateOf("")
+    }
+    var checkState = remember {
+        mutableStateOf(false)
+    }
+
 
     Column(
         modifier = Modifier.fillMaxSize()
@@ -331,8 +359,10 @@ fun SignUp() {
         ){
 
             OutlinedTextField(
-                value = "",
-                onValueChange = {},
+                value = usernameState.value,
+                onValueChange = {
+                                usernameState.value = it
+                },
                 label = {
                     Text(text = "Username")
                 },
@@ -353,8 +383,10 @@ fun SignUp() {
             )
 
             OutlinedTextField(
-                value = "",
-                onValueChange = {},
+                value = phoneState.value,
+                onValueChange = {
+                                phoneState.value = it
+                },
                 label = {
                     Text(text = "Phone")
                 },
@@ -374,8 +406,10 @@ fun SignUp() {
             )
 
             OutlinedTextField(
-                value = "",
-                onValueChange = {},
+                value = emailState.value,
+                onValueChange = {
+                                emailState.value = it
+                },
                 label = {
                     Text(text = "E-mail")
                 },
@@ -395,8 +429,10 @@ fun SignUp() {
             )
 
             OutlinedTextField(
-                value = "",
-                onValueChange = {},
+                value = passwordState.value,
+                onValueChange = {
+                                passwordState.value = it
+                },
                 label = {
                     Text(text = "Password")
                 },
@@ -427,8 +463,10 @@ fun SignUp() {
 
 
             Checkbox(
-                checked = false,
-                onCheckedChange  = {},
+                checked = checkState.value,
+                onCheckedChange  = {
+                                   checkState.value = it
+                },
                 colors = CheckboxDefaults
                     .colors(
                         checkedColor = Color(0xffCF06F0),
@@ -506,10 +544,14 @@ fun SignUp() {
 @Composable
 fun Home(){
 
+    var buscarPersonagensState = remember {
+        mutableStateOf("")
+    }
+
     Column (
         modifier = Modifier
             .fillMaxSize()
-            .background(color = Color(0xDCD5D7DA)),
+            .background(color = Color(0xDCFFFFFF)),
     ){
 
         Column(modifier = Modifier
@@ -593,8 +635,10 @@ fun Home(){
         Column (modifier = Modifier.padding(16.dp)){
 
             OutlinedTextField(
-                value = "",
-                onValueChange = {},
+                value = buscarPersonagensState.value,
+                onValueChange = {
+                                buscarPersonagensState.value = it
+                },
                 modifier = Modifier
                     .fillMaxWidth(),
                 placeholder = {
@@ -603,7 +647,7 @@ fun Home(){
                         color = Color.Gray
                     )
                 },
-                shape = RoundedCornerShape(12.dp),
+                shape = RoundedCornerShape(22.dp),
                 colors = TextFieldDefaults.colors(Color.White),
                 trailingIcon = {
                     IconButton(onClick = { /*TODO*/ }) {
@@ -615,11 +659,60 @@ fun Home(){
                     }
                 }
             )
+
+            Spacer(modifier = Modifier.height(30.dp))
+            Text(text = "Past Trips")
+            Spacer(modifier = Modifier.height(20.dp))
+
+            LazyColumn(){
+
+                items(2){
+                    Card (
+
+                    ){
+                        Column (modifier = Modifier
+                            .padding(12.dp)){
+
+                            Box(modifier = Modifier
+                                .fillMaxWidth()
+                                .height(80.dp)){
+
+                            }
+                            Text(text = "London, 2019",
+                                    color = Color(0xFFCF06F0),
+                                    fontSize = 18.sp)
+                            Text(text = "London is the capital and largest city of  the United Kingdom, with a population of just under 9 million.",
+                                color = Color(0xFF7A7A7A),
+                                fontSize = 11.sp)
+
+                            Row (horizontalArrangement = Arrangement.End,
+                                modifier = Modifier.fillMaxWidth()){
+                                Text(text = "18 Feb - 21 Feb",
+                                    color = Color(0xFFCF06F0),
+                                    fontSize = 14.sp)
+                            }
+                        }
+                    }
+                    Spacer(modifier = Modifier.height(30.dp))
+                }
+            }
         }
 
 
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
 
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
@@ -628,8 +721,6 @@ fun HomePreview() {
         Home()
     }
 }
-
-
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
 fun GreetingPreview() {
