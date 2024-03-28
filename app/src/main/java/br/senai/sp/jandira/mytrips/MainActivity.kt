@@ -4,6 +4,8 @@ import android.os.Bundle
 import android.renderscript.ScriptGroup.Input
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.animation.scaleIn
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -54,6 +56,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Outline
 import androidx.compose.ui.layout.ContentScale
@@ -547,11 +550,15 @@ fun Home(){
     var buscarPersonagensState = remember {
         mutableStateOf("")
     }
+    Image(
+        painter = painterResource(id = R.drawable.background_header),
+        contentDescription = "")
+
 
     Column (
         modifier = Modifier
             .fillMaxSize()
-            .background(color = Color(0xDCFFFFFF)),
+            .background(color = Color(0xffF6F6F6)),
     ){
 
         Column(modifier = Modifier
@@ -643,12 +650,22 @@ fun Home(){
                     .fillMaxWidth(),
                 placeholder = {
                     Text(
-                        text = "Buscar personagens",
+                        text = "Search your destiny",
                         color = Color.Gray
                     )
                 },
                 shape = RoundedCornerShape(22.dp),
-                colors = TextFieldDefaults.colors(Color.White),
+//              colors = TextFieldDefaults.colors(Color.White),
+
+                colors =
+                OutlinedTextFieldDefaults
+                    .colors(
+                        focusedBorderColor = Color(0xFFFFFFFF),
+                        unfocusedBorderColor = Color(0xffFFFFFF),
+                        unfocusedContainerColor = Color(0xffFFFFFF),
+                    ),
+
+
                 trailingIcon = {
                     IconButton(onClick = { /*TODO*/ }) {
                         Icon(
@@ -662,12 +679,19 @@ fun Home(){
 
             Spacer(modifier = Modifier.height(30.dp))
             Text(text = "Past Trips")
-            Spacer(modifier = Modifier.height(20.dp))
+
+            Spacer(modifier = Modifier.height(14.dp))
 
             LazyColumn(){
 
                 items(2){
                     Card (
+                        elevation = CardDefaults.cardElevation(
+                            defaultElevation = 6.dp
+                        ),
+                        colors = CardDefaults.cardColors(
+                            containerColor = Color.White
+                        )
 
                     ){
                         Column (modifier = Modifier
@@ -675,9 +699,16 @@ fun Home(){
 
                             Box(modifier = Modifier
                                 .fillMaxWidth()
-                                .height(80.dp)){
+                                .height(80.dp))
+                            {
 
+                                Image(
+                                    painter = painterResource(id = R.drawable.imagecard),
+                                    contentDescription = "",
+                                    contentScale = ContentScale.Crop
+                                )
                             }
+
                             Text(text = "London, 2019",
                                     color = Color(0xFFCF06F0),
                                     fontSize = 18.sp)
@@ -693,7 +724,7 @@ fun Home(){
                             }
                         }
                     }
-                    Spacer(modifier = Modifier.height(30.dp))
+                    Spacer(modifier = Modifier.height(15.dp))
                 }
             }
         }
