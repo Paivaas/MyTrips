@@ -1,15 +1,10 @@
 package br.senai.sp.jandira.mytrips
 
 import android.os.Bundle
-import android.renderscript.ScriptGroup.Input
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.animation.scaleIn
-import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.border
-import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -25,7 +20,6 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowForward
@@ -38,7 +32,6 @@ import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
-import androidx.compose.material3.CardColors
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Checkbox
 import androidx.compose.material3.CheckboxDefaults
@@ -49,16 +42,12 @@ import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextField
-import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.Outline
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
@@ -66,7 +55,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import br.senai.sp.jandira.mytrips.ui.theme.MyTripsTheme
-import org.intellij.lang.annotations.JdkConstants.HorizontalAlignment
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -547,13 +535,9 @@ fun SignUp() {
 @Composable
 fun Home(){
 
-    var buscarPersonagensState = remember {
+    var buscarDestinoState = remember {
         mutableStateOf("")
     }
-    Image(
-        painter = painterResource(id = R.drawable.background_header),
-        contentDescription = "")
-
 
     Column (
         modifier = Modifier
@@ -561,11 +545,17 @@ fun Home(){
             .background(color = Color(0xffF6F6F6)),
     ){
 
-        Column(modifier = Modifier
+        Surface(modifier = Modifier
             .fillMaxWidth()
             .height(220.dp)
-            .background(color = Color(0xFFCE7DC6)),
         ){
+            Image(
+                painter = painterResource(id = R.drawable.backgroundheader),
+                contentDescription = "",
+                contentScale = ContentScale.Crop
+
+            )
+
 
             Column(modifier = Modifier
                 .fillMaxWidth()
@@ -574,13 +564,17 @@ fun Home(){
                 Column(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .height(120.dp),
+                        .height(130.dp),
                     horizontalAlignment = Alignment.End
                 ){
-                    Box(modifier = Modifier
+                    Surface(modifier = Modifier
                         .width(60.dp)
-                        .height(60.dp)){
-
+                        .height(60.dp))
+                    {
+                        Image(
+                            painter = painterResource(id = R.drawable.fotoperfil),
+                            contentDescription = "",
+                            contentScale = ContentScale.Crop)
                     }
                     Text(text = "Susanna Hoffs",
                         color = Color.White,)
@@ -595,12 +589,13 @@ fun Home(){
                             tint = Color.White
                         )
                         Text(text = "You're in Paris",
-                            color = Color.White
+                            color = Color.White,
+                            fontSize = 14.sp,
                         )
                     }
                     Text(text = "My Trips",
                         color = Color.White,
-                        fontSize = 34.sp,
+                        fontSize = 30.sp,
                         fontWeight = FontWeight.Bold
                     )
                 }
@@ -642,9 +637,9 @@ fun Home(){
         Column (modifier = Modifier.padding(16.dp)){
 
             OutlinedTextField(
-                value = buscarPersonagensState.value,
+                value = buscarDestinoState.value,
                 onValueChange = {
-                                buscarPersonagensState.value = it
+                    buscarDestinoState.value = it
                 },
                 modifier = Modifier
                     .fillMaxWidth(),
@@ -697,24 +692,29 @@ fun Home(){
                         Column (modifier = Modifier
                             .padding(12.dp)){
 
-                            Box(modifier = Modifier
+                            Surface(modifier = Modifier
                                 .fillMaxWidth()
-                                .height(80.dp))
+                                .height(120.dp),
+                                shape = RoundedCornerShape(6.dp)
+                            )
                             {
-
                                 Image(
                                     painter = painterResource(id = R.drawable.imagecard),
                                     contentDescription = "",
                                     contentScale = ContentScale.Crop
+
                                 )
                             }
 
+                            Spacer(modifier = Modifier.height(12.dp))
                             Text(text = "London, 2019",
                                     color = Color(0xFFCF06F0),
                                     fontSize = 18.sp)
+                            Spacer(modifier = Modifier.height(6.dp))
                             Text(text = "London is the capital and largest city of  the United Kingdom, with a population of just under 9 million.",
                                 color = Color(0xFF7A7A7A),
-                                fontSize = 11.sp)
+                                fontSize = 11.sp,
+                                lineHeight = 15.sp)
 
                             Row (horizontalArrangement = Arrangement.End,
                                 modifier = Modifier.fillMaxWidth()){
