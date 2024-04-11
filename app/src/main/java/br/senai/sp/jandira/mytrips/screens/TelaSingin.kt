@@ -2,6 +2,7 @@ package br.senai.sp.jandira.mytrips.screens
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -40,6 +41,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import br.senai.sp.jandira.mytrips.R
 
 @Composable
@@ -325,6 +327,9 @@ fun SignUp(controleNavegacao: NavHostController) {
                 fontWeight = FontWeight.Bold,
                 modifier = Modifier
                     .padding(start = 6.dp)
+                    .clickable {
+                        controleNavegacao.navigate("login")
+                    }
             )
         }
     }
@@ -354,6 +359,6 @@ fun SignUp(controleNavegacao: NavHostController) {
 @Preview(showBackground = true)
 @Composable
 fun SingUPpreview() {
-    SignUp(controleNavegacao)
+    SignUp(controleNavegacao =  rememberNavController())
 }
 

@@ -34,9 +34,11 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
+import br.senai.sp.jandira.mytrips.ui.theme.MyTripsTheme
 
 @Composable
-fun Login(controleNavegacao: NavHostController) {
+fun Login(controleDeNavegacao : NavHostController) {
 
     var emailState = remember {
         mutableStateOf("")
@@ -161,7 +163,9 @@ fun Login(controleNavegacao: NavHostController) {
             Button(onClick = {
 
                                  if (emailState.value == "julia" && passwordState.value == "12345"){
-                                     //tela home
+
+                                     controleDeNavegacao.navigate("home")
+
                                  }else{
                                      mensagemErroState.value = "Usuario ou senha incorretos"
                                  }
@@ -196,7 +200,7 @@ fun Login(controleNavegacao: NavHostController) {
                     modifier = Modifier
                         .padding(start = 6.dp)
                         .clickable {
-                            //ir para o sing in
+                            controleDeNavegacao.navigate("singin")
                         }
                 )
             }
@@ -225,7 +229,9 @@ fun Login(controleNavegacao: NavHostController) {
 
 @Preview(showBackground = true)
 @Composable
-fun LogINPreview() {
-    Login(controleNavegacao)
+fun LoginPreview() {
+    MyTripsTheme {
+        Login(controleDeNavegacao = rememberNavController())
+    }
 }
 

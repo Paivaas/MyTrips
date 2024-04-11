@@ -38,6 +38,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import br.senai.sp.jandira.mytrips.R
 
 @Composable
@@ -78,13 +79,13 @@ fun Home(controleNavegacao: NavHostController) {
                     Surface(modifier = Modifier
                         .width(60.dp)
                         .height(60.dp)
+
                     )
                     {
                         Image(
                             painter = painterResource(id = R.drawable.fotoperfil),
                             contentDescription = "",
-                            contentScale = ContentScale.Crop,
-
+                            contentScale = ContentScale.Crop
                             )
                     }
                     Text(text = "Susanna Hoffs",
@@ -247,5 +248,5 @@ fun Home(controleNavegacao: NavHostController) {
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
 fun HomePreview() {
-   Home(controleNavegacao)
+   Home(controleNavegacao = rememberNavController())
 }

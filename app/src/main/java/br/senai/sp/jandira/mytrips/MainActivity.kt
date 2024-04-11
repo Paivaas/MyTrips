@@ -25,17 +25,19 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    Login()
-//                    var controleNavegacao = rememberNavController()
-//                    NavHost(navController = controleNavegacao,
-//                        startDestination = "home"
-//                    ){
-//                        composable(route = "login"){ Login(controleNavegacao)}
-//                        composable(route = "singin"){ SignUp(controleNavegacao)}
-//                        composable(route = "home"){ Home(controleNavegacao)}
+                    // Login()
+                    val controleNavegacao = rememberNavController()
+                    NavHost(
+                        navController = controleNavegacao,
+                        startDestination = "Login"
+                    ) {
+                        composable(route = "login") { Login(controleNavegacao) }
+                        composable(route = "singin") { SignUp(controleNavegacao) }
+                        composable(route = "home") { Home(controleNavegacao) }
                     }
                 }
             }
         }
     }
 }
+
