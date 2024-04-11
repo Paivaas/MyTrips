@@ -115,7 +115,9 @@ fun Home(controleNavegacao: NavHostController) {
         Row (modifier = Modifier
             .padding(16.dp)
         ) {
-            Text(text = "Categories")
+            Text(text = "Categories",
+                color = Color(0xFF868181),
+                fontSize = 16.sp)
         }
         LazyRow(modifier = Modifier
             .padding(start = 16.dp)
@@ -157,7 +159,7 @@ fun Home(controleNavegacao: NavHostController) {
                 placeholder = {
                     Text(
                         text = "Search your destiny",
-                        color = Color.Gray
+                        color = Color(0xFFADAAAA)
                     )
                 },
                 shape = RoundedCornerShape(22.dp),
@@ -177,14 +179,17 @@ fun Home(controleNavegacao: NavHostController) {
                         Icon(
                             imageVector = Icons.Default.Search,
                             contentDescription = "Search your destiny",
-                            tint = Color.Gray
+                            tint = Color(0xFFADAAAA)
                         )
                     }
                 }
             )
 
             Spacer(modifier = Modifier.height(30.dp))
-            Text(text = "Past Trips")
+            Text(text = "Past Trips",
+                color = Color(0xFF868181),
+                fontSize = 16.sp
+            )
 
             Spacer(modifier = Modifier.height(14.dp))
 
