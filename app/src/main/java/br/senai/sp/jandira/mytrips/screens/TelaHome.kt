@@ -31,6 +31,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
@@ -78,15 +79,13 @@ fun Home(controleNavegacao: NavHostController) {
                 ){
                     Surface(modifier = Modifier
                         .width(60.dp)
-                        .height(60.dp)
+                        .height(60.dp),
+                        shape = RoundedCornerShape(50.dp)
 
                     )
                     {
-                        Image(
-                            painter = painterResource(id = R.drawable.fotoperfil),
-                            contentDescription = "",
-                            contentScale = ContentScale.Crop
-                            )
+                        Image(painter = painterResource(id = R.drawable.fotoperfil), contentDescription = "Foto de perfil")
+
                     }
                     Text(text = "Susanna Hoffs",
                         color = Color.White,)
