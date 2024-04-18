@@ -13,6 +13,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Place
@@ -31,7 +32,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.Shape
+ import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
@@ -41,9 +42,13 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import br.senai.sp.jandira.mytrips.R
+import br.senai.sp.jandira.mytrips.repositorio.CategoriasRepositorio
 
 @Composable
 fun Home(controleNavegacao: NavHostController) {
+
+    val categorias = CategoriasRepositorio().ListarTodasAsCategorias()
+
 
     var buscarDestinoState = remember {
         mutableStateOf("")
@@ -123,7 +128,7 @@ fun Home(controleNavegacao: NavHostController) {
             .padding(start = 16.dp)
 
         ){
-            items(10){
+            items(categorias){
                 Card (modifier = Modifier
                     .width(102.dp)
                     .height(64.dp)
@@ -134,12 +139,10 @@ fun Home(controleNavegacao: NavHostController) {
                         verticalArrangement = Arrangement.Center,
                         horizontalAlignment = Alignment.CenterHorizontally
                     ){
-                        Icon(
-                            imageVector = Icons.Default.Place,
-                            contentDescription = "Place",
-                            tint = Color.White
-                        )
-                        Text(text = "Montain",
+                        Surface(modifier = Modifier.height(30.dp).width(30.dp)){
+                            Image(painter = if (it.iconImage == null) painterResource(id = R.drawable.noiconimage)else it.iconImage!!, contentDescription = "", contentScale = ContentScale.Crop)
+                        }
+                        Text(text = it.descricao,
                             color = Color.White
                         )
                     }
@@ -168,6 +171,7 @@ fun Home(controleNavegacao: NavHostController) {
                 colors =
                 OutlinedTextFieldDefaults
                     .colors(
+                        focusedContainerColor = Color(0xFFFFFFFF),
                         focusedBorderColor = Color(0xFFFFFFFF),
                         unfocusedBorderColor = Color(0xffFFFFFF),
                         unfocusedContainerColor = Color(0xffFFFFFF),
