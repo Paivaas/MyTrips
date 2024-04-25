@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
@@ -16,12 +17,15 @@ import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Place
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Surface
@@ -46,6 +50,7 @@ import br.senai.sp.jandira.mytrips.repositorio.CategoriasRepositorio
 import br.senai.sp.jandira.mytrips.repositorio.ViagensRepositorio
 import br.senai.sp.jandira.mytrips.utilitarios.encurtadorDeDatas
 
+
 @Composable
 fun Home(controleNavegacao: NavHostController) {
 
@@ -58,6 +63,8 @@ fun Home(controleNavegacao: NavHostController) {
         mutableStateOf("")
     }
 
+
+
     Column (
         modifier = Modifier
             .fillMaxSize()
@@ -66,7 +73,7 @@ fun Home(controleNavegacao: NavHostController) {
 
         Surface(modifier = Modifier
             .fillMaxWidth()
-            .height(220.dp)
+            .height(216.dp)
         ){
             Image(
                 painter = painterResource(id = R.drawable.backgroundheader),
@@ -96,21 +103,22 @@ fun Home(controleNavegacao: NavHostController) {
                         Image(painter = painterResource(id = R.drawable.fotoperfil), contentDescription = "Foto de perfil")
 
                     }
-                    Text(text = "Julia Paivas",
+                    Text(text = "Julia Paiva",
                         color = Color.White,)
                 }
 
                 Column (modifier = Modifier
                 ){
-                    Row {
+                    Row (modifier = Modifier .offset(x = -6.dp,y = 10.dp), verticalAlignment = Alignment.CenterVertically){
                         Icon(
                             imageVector = Icons.Default.Place,
                             contentDescription = "Buscar",
-                            tint = Color.White
+                            tint = Color.White,
+                            modifier = Modifier.height(16.dp)
                         )
                         Text(text = "You're in Paris",
                             color = Color.White,
-                            fontSize = 14.sp,
+                            fontSize = 18.sp
                         )
                     }
                     Text(text = "My Trips",
@@ -143,12 +151,18 @@ fun Home(controleNavegacao: NavHostController) {
                         verticalArrangement = Arrangement.Center,
                         horizontalAlignment = Alignment.CenterHorizontally
                     ){
-                        Surface(modifier = Modifier.height(30.dp).width(30.dp)){
-                            Image(painter = if (it.iconImage == null) painterResource(id = R.drawable.noiconimage)else it.iconImage!!, contentDescription = "", contentScale = ContentScale.Crop)
-                        }
-                        Text(text = it.descricao,
-                            color = Color.White
-                        )
+
+                                Surface (modifier = Modifier.height(30.dp).width(30.dp).background(color = Color(
+                                    0x00CF06F0
+                                )
+                                ),
+                                    shape = RoundedCornerShape(50.dp)){
+                                    Image(painter = if (it.iconImage == null) painterResource(id = R.drawable.noiconimage)else it.iconImage!!, contentDescription = "", contentScale = ContentScale.Crop)
+                                }
+
+                            Text(text = it.descricao,
+                                color = Color.White
+                            )
                     }
                 }
             }
@@ -218,7 +232,7 @@ fun Home(controleNavegacao: NavHostController) {
 
                             Surface(modifier = Modifier
                                 .fillMaxWidth()
-                                .height(150.dp),
+                                .height(120.dp),
                                 shape = RoundedCornerShape(6.dp)
                             )
                             {
