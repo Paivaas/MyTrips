@@ -43,11 +43,15 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import br.senai.sp.jandira.mytrips.R
 import br.senai.sp.jandira.mytrips.repositorio.CategoriasRepositorio
+import br.senai.sp.jandira.mytrips.repositorio.ViagensRepositorio
+import br.senai.sp.jandira.mytrips.utilitarios.encurtadorDeDatas
 
 @Composable
 fun Home(controleNavegacao: NavHostController) {
 
     val categorias = CategoriasRepositorio().ListarTodasAsCategorias()
+    val viagens = ViagensRepositorio().ListarTodasAsViagens()
+
 
 
     var buscarDestinoState = remember {
@@ -92,7 +96,7 @@ fun Home(controleNavegacao: NavHostController) {
                         Image(painter = painterResource(id = R.drawable.fotoperfil), contentDescription = "Foto de perfil")
 
                     }
-                    Text(text = "Susanna Hoffs",
+                    Text(text = "Julia Paivas",
                         color = Color.White,)
                 }
 
@@ -130,7 +134,7 @@ fun Home(controleNavegacao: NavHostController) {
         ){
             items(categorias){
                 Card (modifier = Modifier
-                    .width(102.dp)
+                    .width(142.dp)
                     .height(64.dp)
                     .padding(end = 8.dp),
                     colors = CardDefaults.cardColors(containerColor = Color(0xFFCF06F0)),){
@@ -199,7 +203,7 @@ fun Home(controleNavegacao: NavHostController) {
 
             LazyColumn(){
 
-                items(4){
+                items(viagens){
                     Card (
                         elevation = CardDefaults.cardElevation(
                             defaultElevation = 6.dp
@@ -214,31 +218,26 @@ fun Home(controleNavegacao: NavHostController) {
 
                             Surface(modifier = Modifier
                                 .fillMaxWidth()
-                                .height(120.dp),
+                                .height(150.dp),
                                 shape = RoundedCornerShape(6.dp)
                             )
                             {
-                                Image(
-                                    painter = painterResource(id = R.drawable.imagecard),
-                                    contentDescription = "",
-                                    contentScale = ContentScale.Crop
-
-                                )
+                                Image(painter = if (it.imagem == null) painterResource(id = R.drawable.noimage)else it.imagem!!, contentDescription = "", contentScale = ContentScale.Crop)
                             }
 
                             Spacer(modifier = Modifier.height(12.dp))
-                            Text(text = "London, 2019",
+                            Text(text = "${it.destino}, ${it.dataChegada.year}",
                                 color = Color(0xFFCF06F0),
                                 fontSize = 18.sp)
                             Spacer(modifier = Modifier.height(6.dp))
-                            Text(text = "London is the capital and largest city of  the United Kingdom, with a population of just under 9 million.",
+                            Text(text = it.descricao,
                                 color = Color(0xFF7A7A7A),
                                 fontSize = 11.sp,
                                 lineHeight = 15.sp)
 
                             Row (horizontalArrangement = Arrangement.End,
                                 modifier = Modifier.fillMaxWidth()){
-                                Text(text = "18 Feb - 21 Feb",
+                                Text(text = encurtadorDeDatas(it.dataChegada, it.dataPartida),
                                     color = Color(0xFFCF06F0),
                                     fontSize = 14.sp)
                             }

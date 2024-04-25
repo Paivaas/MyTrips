@@ -10,4 +10,3 @@ data class Categorias(
     var iconImage: Painter? = null
 
 )
-// teste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

@@ -11,13 +11,12 @@ class CategoriasRepositorio {
         val Montain = Categorias(
             id = 1,
             descricao = "Montain",
-            iconImage = painterResource(id = R.drawable.montain)
+            iconImage = painterResource(id = R.drawable.fotoperfil)
         )
 
         val Snow = Categorias(
             id = 2,
-            descricao = "Snow",
-            iconImage = painterResource(id = R.drawable.snow)
+            descricao = "Snow"
         )
 
         val Beach = Categorias(
