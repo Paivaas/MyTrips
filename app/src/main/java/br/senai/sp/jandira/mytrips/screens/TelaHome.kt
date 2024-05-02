@@ -39,6 +39,7 @@ import androidx.compose.ui.graphics.Color
  import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -116,12 +117,20 @@ fun Home(controleNavegacao: NavHostController) {
                             tint = Color.White,
                             modifier = Modifier.height(16.dp)
                         )
-                        Text(text = "You're in Paris",
-                            color = Color.White,
-                            fontSize = 18.sp
-                        )
+                        Row {
+                            Text(text = stringResource(id = R.string.home_subTitle),
+                                color = Color.White,
+                                fontSize = 18.sp
+                            )
+                            Spacer(modifier = Modifier.width(3.dp))
+                            Row {
+                                Text(text = "Paris",
+                                    color = Color.White,
+                                    fontSize = 18.sp)
+                            }
+                        }
                     }
-                    Text(text = "My Trips",
+                    Text(text = stringResource(id = R.string.home_title),
                         color = Color.White,
                         fontSize = 30.sp,
                         fontWeight = FontWeight.Bold
@@ -152,10 +161,14 @@ fun Home(controleNavegacao: NavHostController) {
                         horizontalAlignment = Alignment.CenterHorizontally
                     ){
 
-                                Surface (modifier = Modifier.height(30.dp).width(30.dp).background(color = Color(
-                                    0x00CF06F0
-                                )
-                                ),
+                                Surface (modifier = Modifier
+                                    .height(30.dp)
+                                    .width(30.dp)
+                                    .background(
+                                        color = Color(
+                                            0x00CF06F0
+                                        )
+                                    ),
                                     shape = RoundedCornerShape(50.dp)){
                                     Image(painter = if (it.iconImage == null) painterResource(id = R.drawable.noiconimage)else it.iconImage!!, contentDescription = "", contentScale = ContentScale.Crop)
                                 }

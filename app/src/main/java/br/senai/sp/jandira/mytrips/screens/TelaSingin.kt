@@ -36,6 +36,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -94,13 +95,13 @@ fun SignUp(controleNavegacao: NavHostController) {
             verticalArrangement = Arrangement.Center
         ) {
             Text(
-                text = "Sign Up",
+                text = stringResource(id = R.string.singUp_title),
                 color = Color(0xffCF06F0),
                 fontSize = 48.sp,
                 fontWeight = FontWeight.Bold,
             )
             Text(
-                text = "Create a new account",
+                text = stringResource(id = R.string.singUp_subTitle),
                 color = Color(0xFFA09C9C)
             )
         }
@@ -162,7 +163,7 @@ fun SignUp(controleNavegacao: NavHostController) {
                     usernameState.value = it
                 },
                 label = {
-                    Text(text = "Username")
+                    Text(text = stringResource(id = R.string.input_username))
                 },
                 leadingIcon = {
                     Icon(
@@ -187,7 +188,7 @@ fun SignUp(controleNavegacao: NavHostController) {
                     phoneState.value = it
                 },
                 label = {
-                    Text(text = "Phone")
+                    Text(text = stringResource(id = R.string.input_phone))
                 },
                 leadingIcon = {
                     Icon(
@@ -212,7 +213,7 @@ fun SignUp(controleNavegacao: NavHostController) {
                     emailState.value = it
                 },
                 label = {
-                    Text(text = "E-mail")
+                    Text(text = stringResource(id = R.string.input_email))
                 },
                 leadingIcon = {
                     Icon(
@@ -237,7 +238,7 @@ fun SignUp(controleNavegacao: NavHostController) {
                     passwordState.value = it
                 },
                 label = {
-                    Text(text = "Password")
+                    Text(text = stringResource(id = R.string.input_password))
                 },
                 leadingIcon = {
                     Icon(
@@ -278,7 +279,7 @@ fun SignUp(controleNavegacao: NavHostController) {
                         uncheckedColor = Color(0xffCF06F0)
                     )
             )
-            Text(text = "Over 18?")
+            Text(text = stringResource(id = R.string.singUp_boolean_18))
         }
 
         Column(
@@ -302,8 +303,8 @@ fun SignUp(controleNavegacao: NavHostController) {
                     horizontalArrangement = Arrangement.SpaceAround
                 ) {
                     Text(
-                        text = "Create Account",
-                        fontSize = 26.sp
+                        text = stringResource(id = R.string.singUp_button_create_account),
+                        fontSize = 22.sp
                     )
                 }
             }
@@ -318,11 +319,11 @@ fun SignUp(controleNavegacao: NavHostController) {
 
         ) {
             Text(
-                text = "Already have an account?",
+                text = stringResource(id = R.string.singUp_have_account),
                 color = Color(0xFFFA09C9C)
             )
             Text(
-                text = "Login",
+                text = stringResource(id = R.string.singUp_have_account_nav),
                 color = Color(0xFFCF06F0),
                 fontWeight = FontWeight.Bold,
                 modifier = Modifier

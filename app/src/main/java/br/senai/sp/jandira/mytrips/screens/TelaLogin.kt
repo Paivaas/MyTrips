@@ -29,12 +29,14 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
+import br.senai.sp.jandira.mytrips.R
 import br.senai.sp.jandira.mytrips.ui.theme.MyTripsTheme
 
 @Composable
@@ -77,12 +79,13 @@ fun Login(controleDeNavegacao : NavHostController) {
         Column (modifier = Modifier
             .padding(22.dp)
         ){
-            Text(text = "Login",
+            Text(
+                text = stringResource(id = R.string.login_title),
                 color = Color(0xffCF06F0),
                 fontSize = 48.sp,
                 fontWeight = FontWeight.Bold,
             )
-            Text(text = "Please sign in to continue.",
+            Text(text = stringResource(id = R.string.login_subTitle),
                 color = Color(0xFFA09C9C)
             )
         }
@@ -104,11 +107,11 @@ fun Login(controleDeNavegacao : NavHostController) {
                     emailState.value = it
                 },
                 label = {
-                    Text(text = "E-mail")
+                    Text(text = stringResource(id = R.string.input_email))
                 },
                 leadingIcon = {
                     Icon(imageVector = Icons.Default.Lock,
-                        contentDescription = "oi",
+                        contentDescription = "email",
                         tint = Color(0xffCF06F0),
                     )
                 },
@@ -129,11 +132,11 @@ fun Login(controleDeNavegacao : NavHostController) {
                     passwordState.value = it
                 },
                 label = {
-                    Text(text = "Password")
+                    Text(text = stringResource(id = R.string.input_password))
                 },
                 leadingIcon = {
                     Icon(imageVector = Icons.Default.Email,
-                        contentDescription = "oi",
+                        contentDescription = "Password",
                         tint = Color(0xffCF06F0),)
                 },
                 colors = OutlinedTextFieldDefaults
@@ -182,25 +185,25 @@ fun Login(controleDeNavegacao : NavHostController) {
                     verticalAlignment = Alignment.CenterVertically,
                     horizontalArrangement = Arrangement.SpaceAround
                 ){
-                    Text(text = "Sing in",
+                    Text(text = stringResource(id = R.string.login_button_singIn),
                         fontSize = 26.sp)
                     Icon(imageVector = Icons.Default.ArrowForward,
-                        contentDescription = "oi",
+                        contentDescription = "seta direita",
                         tint = Color(0xFFFFFFFF),
                     )
                 }
             }
             Row {
-                Text(text = "Don’t have an account?",
+                Text(text = stringResource(id = R.string.login_create_account),
                     color = Color(0xFFFA09C9C)
                 )
-                Text(text = "Sign in",
+                Text(text = stringResource(id = R.string.login_create_account_nav),
                     color = Color(0xFFCF06F0),
                     fontWeight = FontWeight.Bold,
                     modifier = Modifier
                         .padding(start = 6.dp)
                         .clickable {
-                            controleDeNavegacao.navigate("singin")
+                            controleDeNavegacao.navigate("login")
                         }
                 )
             }
