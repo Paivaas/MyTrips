@@ -95,13 +95,13 @@ fun SignUp(controleNavegacao: NavHostController) {
             verticalArrangement = Arrangement.Center
         ) {
             Text(
-                text = stringResource(id = R.string.singUp_title),
+                text = stringResource(id = R.string.signUp_title),
                 color = Color(0xffCF06F0),
                 fontSize = 48.sp,
                 fontWeight = FontWeight.Bold,
             )
             Text(
-                text = stringResource(id = R.string.singUp_subTitle),
+                text = stringResource(id = R.string.signUp_subTitle),
                 color = Color(0xFFA09C9C)
             )
         }
@@ -179,7 +179,8 @@ fun SignUp(controleNavegacao: NavHostController) {
                     ),
                 shape = RoundedCornerShape(16.dp),
                 modifier = Modifier
-                    .width(327.dp)
+                    .width(327.dp),
+                maxLines = 1
             )
 
             OutlinedTextField(
@@ -204,7 +205,8 @@ fun SignUp(controleNavegacao: NavHostController) {
                     ),
                 shape = RoundedCornerShape(16.dp),
                 modifier = Modifier
-                    .width(327.dp)
+                    .width(327.dp),
+                maxLines = 1
             )
 
             OutlinedTextField(
@@ -229,7 +231,8 @@ fun SignUp(controleNavegacao: NavHostController) {
                     ),
                 shape = RoundedCornerShape(16.dp),
                 modifier = Modifier
-                    .width(327.dp)
+                    .width(327.dp),
+                maxLines = 1
             )
 
             OutlinedTextField(
@@ -254,7 +257,8 @@ fun SignUp(controleNavegacao: NavHostController) {
                     ),
                 shape = RoundedCornerShape(16.dp),
                 modifier = Modifier
-                    .width(327.dp)
+                    .width(327.dp),
+                maxLines = 1
             )
 
         }
@@ -279,7 +283,7 @@ fun SignUp(controleNavegacao: NavHostController) {
                         uncheckedColor = Color(0xffCF06F0)
                     )
             )
-            Text(text = stringResource(id = R.string.singUp_boolean_18))
+            Text(text = stringResource(id = R.string.signUp_boolean_18))
         }
 
         Column(
@@ -303,7 +307,7 @@ fun SignUp(controleNavegacao: NavHostController) {
                     horizontalArrangement = Arrangement.SpaceAround
                 ) {
                     Text(
-                        text = stringResource(id = R.string.singUp_button_create_account),
+                        text = stringResource(id = R.string.signUp_button_create_account),
                         fontSize = 22.sp
                     )
                 }
@@ -319,11 +323,11 @@ fun SignUp(controleNavegacao: NavHostController) {
 
         ) {
             Text(
-                text = stringResource(id = R.string.singUp_have_account),
+                text = stringResource(id = R.string.signUp_have_account),
                 color = Color(0xFFFA09C9C)
             )
             Text(
-                text = stringResource(id = R.string.singUp_have_account_nav),
+                text = stringResource(id = R.string.signUp_have_account_nav),
                 color = Color(0xFFCF06F0),
                 fontWeight = FontWeight.Bold,
                 modifier = Modifier

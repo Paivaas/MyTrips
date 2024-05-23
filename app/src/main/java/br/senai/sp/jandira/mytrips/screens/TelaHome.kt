@@ -51,20 +51,15 @@ import br.senai.sp.jandira.mytrips.repositorio.CategoriasRepositorio
 import br.senai.sp.jandira.mytrips.repositorio.ViagensRepositorio
 import br.senai.sp.jandira.mytrips.utilitarios.encurtadorDeDatas
 
-
 @Composable
 fun Home(controleNavegacao: NavHostController) {
 
     val categorias = CategoriasRepositorio().ListarTodasAsCategorias()
     val viagens = ViagensRepositorio().ListarTodasAsViagens()
 
-
-
     var buscarDestinoState = remember {
         mutableStateOf("")
     }
-
-
 
     Column (
         modifier = Modifier
@@ -130,7 +125,7 @@ fun Home(controleNavegacao: NavHostController) {
                             }
                         }
                     }
-                    Text(text = stringResource(id = R.string.home_title),
+                    Text(text = "My trips",
                         color = Color.White,
                         fontSize = 30.sp,
                         fontWeight = FontWeight.Bold
@@ -141,7 +136,7 @@ fun Home(controleNavegacao: NavHostController) {
         Row (modifier = Modifier
             .padding(16.dp)
         ) {
-            Text(text = "Categories",
+            Text(text = stringResource(id = R.string.home_categories),
                 color = Color(0xFF868181),
                 fontSize = 16.sp)
         }
@@ -188,11 +183,12 @@ fun Home(controleNavegacao: NavHostController) {
                 onValueChange = {
                     buscarDestinoState.value = it
                 },
+                maxLines = 1,
                 modifier = Modifier
                     .fillMaxWidth(),
                 placeholder = {
                     Text(
-                        text = "Search your destiny",
+                        text = stringResource(id = R.string.home_input),
                         color = Color(0xFFADAAAA)
                     )
                 },
@@ -221,7 +217,7 @@ fun Home(controleNavegacao: NavHostController) {
             )
 
             Spacer(modifier = Modifier.height(30.dp))
-            Text(text = "Past Trips",
+            Text(text = stringResource(id = R.string.home_pastTrips),
                 color = Color(0xFF868181),
                 fontSize = 16.sp
             )

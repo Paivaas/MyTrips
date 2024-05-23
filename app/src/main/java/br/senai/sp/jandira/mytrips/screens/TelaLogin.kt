@@ -111,7 +111,7 @@ fun Login(controleDeNavegacao : NavHostController) {
                 },
                 leadingIcon = {
                     Icon(imageVector = Icons.Default.Lock,
-                        contentDescription = "email",
+                        contentDescription = stringResource(id = R.string.input_email),
                         tint = Color(0xffCF06F0),
                     )
                 },
@@ -185,7 +185,7 @@ fun Login(controleDeNavegacao : NavHostController) {
                     verticalAlignment = Alignment.CenterVertically,
                     horizontalArrangement = Arrangement.SpaceAround
                 ){
-                    Text(text = stringResource(id = R.string.login_button_singIn),
+                    Text(text = stringResource(id = R.string.login_button_signIn),
                         fontSize = 26.sp)
                     Icon(imageVector = Icons.Default.ArrowForward,
                         contentDescription = "seta direita",
@@ -203,7 +203,7 @@ fun Login(controleDeNavegacao : NavHostController) {
                     modifier = Modifier
                         .padding(start = 6.dp)
                         .clickable {
-                            controleDeNavegacao.navigate("login")
+                            controleDeNavegacao.navigate("singin")
                         }
                 )
             }
